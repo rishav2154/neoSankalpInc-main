@@ -1,6 +1,11 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ExternalLink, Users, Zap, Shield, Grid3X3, Star, ArrowLeft } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -15,6 +20,12 @@ const ProductDetail = () => {
       icon: <Zap className="w-6 h-6" />,
       features: ["Real-time dashboards", "Advanced reporting", "Custom integrations"],
       pricing: "Starting at $299/month",
+      images: [
+        "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Our Enterprise Analytics Platform revolutionizes how businesses understand and utilize their data. Built for scale, it processes millions of data points in real-time, providing instant insights that drive strategic decisions.",
       benefits: [
         "Increase decision-making speed by 75%",
@@ -35,6 +46,12 @@ const ProductDetail = () => {
       icon: <Shield className="w-6 h-6" />,
       features: ["Auto-scaling", "99.9% uptime", "Global CDN"],
       pricing: "Starting at $199/month",
+      images: [
+        "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Deploy, scale, and manage your applications with confidence using our comprehensive cloud infrastructure suite. Built on enterprise-grade architecture with global reach and bulletproof security.",
       benefits: [
         "99.9% guaranteed uptime SLA",
@@ -55,6 +72,12 @@ const ProductDetail = () => {
       icon: <Users className="w-6 h-6" />,
       features: ["Video conferencing", "Project management", "File sharing"],
       pricing: "Starting at $15/user/month",
+      images: [
+        "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Break down silos and boost productivity with our all-in-one collaboration platform. Designed for modern teams, it combines communication, project management, and file sharing in one seamless experience.",
       benefits: [
         "Increase team productivity by 40%",
@@ -75,6 +98,12 @@ const ProductDetail = () => {
       icon: <Zap className="w-6 h-6" />,
       features: ["Predictive analytics", "Campaign automation", "Customer insights"],
       pricing: "Starting at $149/month",
+      images: [
+        "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Harness the power of artificial intelligence to create marketing campaigns that convert. Our suite analyzes customer behavior patterns and optimizes your marketing efforts in real-time.",
       benefits: [
         "Increase conversion rates by 60%",
@@ -95,6 +124,12 @@ const ProductDetail = () => {
       icon: <Shield className="w-6 h-6" />,
       features: ["24/7 monitoring", "Threat detection", "Incident response"],
       pricing: "Starting at $499/month",
+      images: [
+        "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Protect your business with enterprise-grade security monitoring and response. Our SOC provides round-the-clock protection against evolving cyber threats.",
       benefits: [
         "99.99% threat detection accuracy",
@@ -115,6 +150,12 @@ const ProductDetail = () => {
       icon: <Users className="w-6 h-6" />,
       features: ["Omnichannel support", "Customer journey mapping", "Satisfaction analytics"],
       pricing: "Starting at $89/month",
+      images: [
+        "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Transform customer interactions into lasting relationships. Our platform unifies all customer touchpoints to deliver consistent, personalized experiences that drive loyalty.",
       benefits: [
         "Increase customer satisfaction by 45%",
@@ -135,6 +176,12 @@ const ProductDetail = () => {
       icon: <Zap className="w-6 h-6" />,
       features: ["Data visualization", "Predictive modeling", "Custom reports"],
       pricing: "Starting at $179/month",
+      images: [
+        "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Transform raw data into strategic insights with our comprehensive Business Intelligence Suite. Built for decision-makers, it provides real-time analytics and predictive modeling capabilities.",
       benefits: [
         "Improve decision accuracy by 65%",
@@ -155,6 +202,12 @@ const ProductDetail = () => {
       icon: <Grid3X3 className="w-6 h-6" />,
       features: ["Process automation", "Legacy modernization", "Change management"],
       pricing: "Starting at $399/month",
+      images: [
+        "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
       detailedDescription: "Navigate your digital transformation journey with confidence. Our platform combines cutting-edge technology with expert guidance to modernize your business processes and drive innovation.",
       benefits: [
         "Accelerate transformation by 50%",
@@ -170,6 +223,10 @@ const ProductDetail = () => {
   ];
 
   const product = products.find(p => p.id === parseInt(id));
+
+  const handleStartFreeTrial = () => {
+    window.open('/call', '_blank');
+  };
 
   if (!product) {
     return (
@@ -225,17 +282,35 @@ const ProductDetail = () => {
                 <span className="text-gray-600 ml-2">(4.9/5)</span>
               </div>
             </div>
-            <button className="bg-[#154c79] hover:bg-[#1a5c8a] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl">
+            <button 
+              onClick={handleStartFreeTrial}
+              className="bg-[#ff7161] hover:bg-[#ff6f61] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+            >
               Start Free Trial
             </button>
           </div>
           <div className="relative">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-96 object-cover rounded-2xl shadow-2xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+            <div className="w-full h-96 rounded-2xl shadow-2xl overflow-hidden">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                navigation={true}
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                loop={true}
+                className="w-full h-full"
+              >
+                {(product.images || [product.image]).map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={image}
+                      alt={`${product.title} - Image ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
 

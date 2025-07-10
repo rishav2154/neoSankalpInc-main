@@ -77,7 +77,7 @@ const AllProductsView = ({ products, onBackClick, onProductClick }) => {
                 </div>
 
                 {/* View Button */}
-                <button className="w-full bg-[#154c79] hover:bg-[#1a5c8a] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 group/button">
+                <button className="w-full bg-[#ff7161] hover:bg-[#ff6f61] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 group/button">
                   <span>Learn More</span>
                   <ExternalLink className="w-4 h-4 group-hover/button:translate-x-1 transition-transform duration-300" />
                 </button>
