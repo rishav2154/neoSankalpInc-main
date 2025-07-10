@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid3X3, ArrowRight, ExternalLink } from 'lucide-react';
+import { Grid3X3, ArrowRight } from 'lucide-react';
 
 const ViewMoreCard = ({ totalProducts, onViewMoreClick }) => {
   return (
@@ -23,11 +23,6 @@ const ViewMoreCard = ({ totalProducts, onViewMoreClick }) => {
         </div>
       </div>
 
-      {/* External Link Indicator */}
-      <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <ExternalLink className="w-4 h-4 text-white" />
-      </div>
-
       {/* Content */}
       <div className="relative h-full flex flex-col justify-center items-center p-8 text-center text-white min-h-[400px]">
         <div className="mb-6">
@@ -46,7 +41,7 @@ const ViewMoreCard = ({ totalProducts, onViewMoreClick }) => {
         </div>
 
         <div className="flex items-center space-x-2 text-white/90 group-hover:text-white transition-colors duration-300">
-          <span className="font-semibold">Visit Products Page</span>
+          <span className="font-semibold">Discover More</span>
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
         </div>
 
