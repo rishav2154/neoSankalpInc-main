@@ -152,7 +152,7 @@ const Work = () => {
   const handleProductClick = (product) => {
     // Open product detail in new tab/window
     const productUrl = `/product/${product.id}`;
-    window.open(productUrl, '_blank');
+    window.open(productUrl, '');
   };
 
   const handleViewMoreClick = () => {
