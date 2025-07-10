@@ -1,12 +1,7 @@
 import React from 'react';
 import { Grid3X3, ArrowRight } from 'lucide-react';
 
-interface ViewMoreCardProps {
-  totalProducts: number;
-  onViewMoreClick: () => void;
-}
-
-const ViewMoreCard: React.FC<ViewMoreCardProps> = ({ totalProducts, onViewMoreClick }) => {
+const ViewMoreCard = ({ totalProducts, onViewMoreClick }) => {
   return (
     <div
       className="group bg-gradient-to-br from-[#154c79] to-[#1a5c8a] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer w-96 flex-shrink-0 relative"

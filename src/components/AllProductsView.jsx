@@ -1,27 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  icon: React.ReactNode;
-  features: string[];
-  pricing: string;
-}
-
-interface AllProductsViewProps {
-  products: Product[];
-  onBackClick: () => void;
-  onProductClick: (product: Product) => void;
-}
-
-const AllProductsView: React.FC<AllProductsViewProps> = ({ 
-  products, 
-  onBackClick, 
-  onProductClick 
-}) => {
+const AllProductsView = ({ products, onBackClick, onProductClick }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
