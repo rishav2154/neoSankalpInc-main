@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* custom styling */
+.navbarList .navLinksLi {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.navbarList .navLinksLi a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  background: #ff6f61;
+  bottom: 0%;
+  left: -110%;
+  transition: all 0.5s;
+}
+
+.navbarList .navLinksLi a:hover::after {
+  left: 0%;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.image {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0% {
+    rotate: 0deg;
+  }
+  25% {
+    rotate: -4deg;
+  }
+  50% {
+    rotate: 4deg;
+  }
+  75% {
+    rotate: -4deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+
+.hover\:animate-shake:hover {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.bouncing {
+  animation: bounce 2s infinite;
+}
+
+/* Shaking animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.shaking {
+  animation: shake 1s infinite;
+}
+
+/* Breathing animation */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.breathing {
+  animation: breathe 3s infinite;
+}
+
+.dm-flip-card {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  background: transparent;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 640px) {
+  .dm-flip-card {
+    width: 150px;
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .dm-flip-card {
+    width: 150px;
+    height: 200px;
+  }
+}
+
+.dm-front-card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  transition: transform 1s;
+  border-radius: 10px;
+  background-image: url("http://dmmotionarts.com/wp-content/uploads/2024/02/DMmotionarts-Mayuresh-portfolio-image-1000x1000-1.jpg");
+  background-size: cover;
+  background-positon: center center;
+}
+
+/*Just overlay color of front image*/
+
+.dm-front-card:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #1b0036;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.dm-back-card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #002b5b;
+  backface-visibility: hidden;
+  transform: rotateY(180deg); /*-180deg to flip direction*/
+  transition: transform 1s;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.dm-flip-card:hover .dm-front-card {
+  transform: rotateY(-180deg); /*180deg to flip direction*/
+}
+
+.dm-flip-card:hover .dm-back-card {
+  transform: rotateY(0deg);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    /* Navy Blue #002B5B */
+    --primary: 212 100% 18%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Coral #FF6F61 */
+    --secondary: 6 100% 69%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Light Gray #F2F2F2 */
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 20%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 212 100% 18%;
+    --radius: 0.5rem;
+
+    --chart-1: 212 100% 18%;
+    --chart-2: 6 100% 69%;
+    --chart-3: 0 0% 95%;
+    --chart-4: 0 0% 75%;
+    --chart-5: 0 0% 55%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Navy Blue darker for dark mode */
+    --primary: 212 100% 28%;
+    --primary-foreground: 0 0% 95%;
+
+    /* Coral darker for dark mode */
+    --secondary: 6 100% 59%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    /* Light Gray darker for dark mode */
+    --accent: 0 0% 25%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 212 100% 28%;
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
