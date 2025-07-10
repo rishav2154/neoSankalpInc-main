@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { ExternalLink, Users, Zap, Shield, Grid3X3, Star, ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import ViewMoreCard from "../ViewMoreCard";
-import AllProductsView from "../AllProductsView";
 
-const Work = () => {
+const ProductDetail = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [currentView, setCurrentView] = useState('gallery');
 
   const products = [
     {
@@ -136,7 +134,18 @@ const Work = () => {
       image: "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800",
       icon: <Zap className="w-6 h-6" />,
       features: ["Data visualization", "Predictive modeling", "Custom reports"],
-      pricing: "Starting at $179/month"
+      pricing: "Starting at $179/month",
+      detailedDescription: "Transform raw data into strategic insights with our comprehensive Business Intelligence Suite. Built for decision-makers, it provides real-time analytics and predictive modeling capabilities.",
+      benefits: [
+        "Improve decision accuracy by 65%",
+        "Reduce reporting time by 80%",
+        "Identify trends 3x faster",
+        "Custom dashboard creation"
+      ],
+      testimonial: {
+        text: "The insights we get from this BI suite have completely changed how we approach strategic planning. Data-driven decisions are now our norm.",
+        author: "Mark Thompson, VP of Strategy at DataCorp"
+      }
     },
     {
       id: 8,
@@ -145,121 +154,151 @@ const Work = () => {
       image: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800",
       icon: <Grid3X3 className="w-6 h-6" />,
       features: ["Process automation", "Legacy modernization", "Change management"],
-      pricing: "Starting at $399/month"
+      pricing: "Starting at $399/month",
+      detailedDescription: "Navigate your digital transformation journey with confidence. Our platform combines cutting-edge technology with expert guidance to modernize your business processes and drive innovation.",
+      benefits: [
+        "Accelerate transformation by 50%",
+        "Reduce operational costs by 40%",
+        "Improve process efficiency by 70%",
+        "Expert guidance and support"
+      ],
+      testimonial: {
+        text: "This platform made our digital transformation seamless. We went from legacy systems to modern, efficient processes in record time.",
+        author: "Jennifer Adams, CTO at ModernTech"
+      }
     }
   ];
 
-  const handleProductClick = (product) => {
-    // Open product detail in new tab/window
-    const productUrl = `/product/${product.id}`;
-    window.open(productUrl, '_blank');
-  };
+  const product = products.find(p => p.id === parseInt(id));
 
-  const handleViewMoreClick = () => {
-    setCurrentView('all-products');
-  };
-
-  const handleBackFromAllProducts = () => {
-    setCurrentView('gallery');
-  };
-
-  // All Products View
-  if (currentView === 'all-products') {
+  if (!product) {
     return (
-      <AllProductsView
-        products={products}
-        onBackClick={handleBackFromAllProducts}
-        onProductClick={handleProductClick}
-      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Product Not Found</h1>
+          <p className="text-gray-600 mb-8">The product you're looking for doesn't exist.</p>
+          <button
+            onClick={() => window.close()}
+            className="bg-[#154c79] hover:bg-[#1a5c8a] text-white font-bold py-3 px-6 rounded-xl transition-all duration-300"
+          >
+            Close Window
+          </button>
+        </div>
+      </div>
     );
   }
 
-  // Gallery View - Horizontal Products Scroll
-  const displayProducts = products.slice(0, 5);
-
   return (
-    <div className="py-16 px-32 max-xl:px-12 max-lg:px-5 bg-white" id="work">
-      {/* Heading Section */}
-      <div className="text-center mb-12">
-        <h2 className="text-6xl max-[500px]:text-4xl text-text font-medium text-center mb-8">
-          Check Out
-          <span className="text-secondary ml-3">Our Products</span>
-        </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Scroll through our enterprise-grade solutions designed for modern businesses
-        </p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Close Button */}
+        <button
+          onClick={() => window.close()}
+          className="inline-flex items-center space-x-2 text-[#154c79] hover:text-[#1a5c8a] font-semibold mb-8 transition-colors duration-300"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span>Close</span>
+        </button>
 
-      {/* Horizontal Products Scroll */}
-      <div className="overflow-x-auto pb-6">
-        <div className="flex space-x-6 w-max">
-          {displayProducts.map((product) => (
-            <div
-              key={product.id}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-[#154c79]/20 cursor-pointer w-96 flex-shrink-0"
-              onClick={() => handleProductClick(product)}
-            >
-              {/* Product Image */}
-              <div className="relative overflow-hidden h-56">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
-                  <div className="text-[#154c79]">
-                    {product.icon}
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white font-bold text-xl mb-1">
-                    {product.title}
-                  </h3>
-                  <p className="text-white/90 text-sm">
-                    {product.pricing}
-                  </p>
-                </div>
+        {/* Product Hero Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <div>
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="bg-[#154c79] text-white p-3 rounded-xl">
+                {product.icon}
               </div>
-
-              {/* Product Content */}
-              <div className="p-7">
-                <p className="text-gray-600 mb-5 leading-relaxed line-clamp-2">
-                  {product.description}
-                </p>
-
-                {/* Features */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {product.features.slice(0, 2).map((feature, idx) => (
-                    <span key={idx} className="bg-[#154c79]/10 text-[#154c79] text-xs px-3 py-1 rounded-full font-medium">
-                      {feature}
-                    </span>
-                  ))}
-                  {product.features.length > 2 && (
-                    <span className="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full font-medium">
-                      +{product.features.length - 2} more
-                    </span>
-                  )}
-                </div>
-
-                {/* View Button */}
-                <button className="w-full bg-[#154c79] hover:bg-[#1a5c8a] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 group/button">
-                  <span>Learn More</span>
-                  <ExternalLink className="w-4 h-4 group-hover/button:translate-x-1 transition-transform duration-300" />
-                </button>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+                {product.title}
+              </h1>
+            </div>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              {product.detailedDescription || product.description}
+            </p>
+            <div className="flex items-center space-x-4 mb-8">
+              <span className="text-3xl font-bold text-[#154c79]">
+                {product.pricing}
+              </span>
+              <div className="flex items-center space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                ))}
+                <span className="text-gray-600 ml-2">(4.9/5)</span>
               </div>
             </div>
-          ))}
-
-          {/* View More Card */}
-          <ViewMoreCard
-            totalProducts={products.length}
-            onViewMoreClick={handleViewMoreClick}
-          />
+            <button className="bg-[#154c79] hover:bg-[#1a5c8a] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl">
+              Start Free Trial
+            </button>
+          </div>
+          <div className="relative">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="w-full h-96 object-cover rounded-2xl shadow-2xl"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+          </div>
         </div>
+
+        {/* Key Benefits */}
+        {product.benefits && (
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              Key Benefits
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {product.benefits.map((benefit, index) => (
+                <div key={index} className="flex items-start space-x-4 bg-white p-6 rounded-xl shadow-lg">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                  </div>
+                  <span className="text-gray-700 font-medium">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Features Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Core Features
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {product.features.map((feature, index) => (
+              <div key={index} className="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-[#154c79]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-8 h-8 bg-[#154c79] rounded-full"></div>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature}</h3>
+                <p className="text-gray-600">
+                  Advanced {feature.toLowerCase()} capabilities designed for enterprise needs.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Testimonial */}
+        {product.testimonial && (
+          <div className="bg-gradient-to-r from-[#154c79] to-[#1a5c8a] rounded-3xl p-8 md:p-12 text-center text-white mb-16">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex justify-center mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <blockquote className="text-xl md:text-2xl font-medium mb-6 leading-relaxed">
+                "{product.testimonial.text}"
+              </blockquote>
+              <cite className="text-blue-200 font-semibold">
+                — {product.testimonial.author}
+              </cite>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default Work;
+export default ProductDetail;
