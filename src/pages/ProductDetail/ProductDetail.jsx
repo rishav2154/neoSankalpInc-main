@@ -225,7 +225,7 @@ const ProductDetail = () => {
   const product = products.find(p => p.id === parseInt(id));
 
   const handleStartFreeTrial = () => {
-    window.open('/call');
+    window.location.href = '/call';
   };
 
   if (!product) {
